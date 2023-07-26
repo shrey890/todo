@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      li {
+        margin-top: 9px;
+      }
+      button {
+        margin-left: 18px;
+      }
+      footer{
+        position: relative;
+        top:73vh;
+        font-size: 2rem;
+        text-align: center;
+
+      }
+    </style>
+  </head>
+  <body>
+    <h1>To-Do App</h1>
+    <form action="" id="ourForm">
+      <input id="ourField" type="text" autofocus autocomplete="off" />
+      <button>create item</button>
+    </form>
+    <h3>need to do</h3>
+    <ol type="I" id="ourList"></ol>
+    <footer>
+      &copy; <a href="https://shreyx.netlify.app" target="_blank">Shrey</a>
+    </footer>
+    
+    <script>  
+      let ourForm = document.getElementById("ourForm");
+      let ourField = document.getElementById("ourField");
+      let ourList = document.getElementById("ourList");
+      ourForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        createItem(ourField.value);
+      });
+      function createItem(x) {
+        let html = `<li>${x}<button onClick='deleteItem(this)'>delete</button></li>`;
+        ourList.insertAdjacentHTML("beforeBegin", html);
+        ourField.value = "";
+        ourField.focus();
+      }
+      // console.log('rainbow is now active');
+      function deleteItem(toDel) {
+        toDel.parentElement.remove();
+        alert("Delete requested");
+      }
+    </script>
+
+  </body>
+</html>
